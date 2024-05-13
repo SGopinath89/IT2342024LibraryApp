@@ -6,6 +6,7 @@ const cookie = require('cookie-parser')
 const router = require('./routes/auth.js')
 
 
+
 const app = express();
 app.use(express.json())
 app.use(cors())
@@ -13,8 +14,9 @@ app.use(cookie())
 dotenv.config()
 app.use('/auth',router)
 
-app.listen(process.env.port,()=>{
+const PORT=8080;//
 
-    console.log("server is running on port");
+app.listen(PORT,()=>{
+    console.log("server is running on port-",PORT);
 })
 
