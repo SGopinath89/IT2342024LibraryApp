@@ -6,6 +6,9 @@ import Login from "./components/login";
 import Register from "./components/register";
 import Support from "./components/support";
 import About from "./components/about";
+import Dashboard from "./components/dashboard";
+import Addbook from "./components/addbook";
+import Addstudent from "./components/addstudent";
 
 function App() {
   return (
@@ -18,6 +21,9 @@ function App() {
         <Route path="/register" element={<Register />}></Route>
         <Route path="/support" element={<Support />}></Route>
         <Route path="/about" element={<About />}></Route>
+        <Route path="/dashboard" element={<Dashboard />}></Route>
+        <Route path="/addbook" element={<Addbook />}></Route>
+        <Route path="/addstudent" element={<Addstudent />}></Route>
       </Routes>
     </BrowserRouter>
   );

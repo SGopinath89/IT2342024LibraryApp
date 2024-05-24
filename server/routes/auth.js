@@ -5,7 +5,7 @@ const adminmodel = require('../models/admin.js')
 const router = express.Router()
 
 router.post('/login', async (req,res)=>{
-
+        
             const {username,password,role} = req.body;
             if(role === 'admin') {
 
@@ -28,7 +28,7 @@ router.post('/login', async (req,res)=>{
             else {
              
             }
-
+         
 
 }) 
 

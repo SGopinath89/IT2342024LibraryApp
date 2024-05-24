@@ -17,7 +17,10 @@ const Navbar = () => {
         <div className='navbar-right'>
         <Link to="./about" className='navbar-link'>About</Link>
         <Link to="./support" className='navbar-link'>Support</Link>
+        <Link to="./dashboard" className='navbar-link'>Dashboard</Link>
         <Link to="./books" className='navbar-link'>Books</Link>
+        <Link to="./addbook" className='navbar-link'>Add-Book</Link>
+        <Link to="./addstudent" className='navbar-link'>Add-Student</Link>
         <Link to="./login" className='navbar-link'>Login</Link>
         <Link to="./register" className='navbar-link'>Sign-up</Link>
         </div>
