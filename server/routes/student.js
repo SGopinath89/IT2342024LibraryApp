@@ -2,8 +2,9 @@ const express = require('express')
 const bcrypt = require('bcrypt')
 const studentmodel = require('../models/Student.js')
 const router = express.Router()
+const verifyAdmin = require('./auth.js')
 
-router.post('/register', async (req, res) => {
+router.post('/register',verifyAdmin, async (req, res) => {
    try {
 
     const {username,password,roll,grade} = req.body;

@@ -1,19 +1,23 @@
 import React, { useState } from 'react';
 import '../css/addstudent.css';
 import axios from 'axios';
+import {useNavigate} from 'react-router-dom'
 
 const Addstudent = () => {
    const [roll, setRoll] = useState('');
    const [username, setUsername] = useState('');
    const [grade, setGrade] = useState('');
    const [password, setPassword] = useState('');
-   
+   const navigate = useNavigate()
 
 
 const handleSubmit = (e) => {
      e.preventDefault()
      axios.post('http://localhost:8080/student/register', {roll, username, password, grade})
      .then(res => {
+         if(res.data.registered) {
+               navigate('/dashboard')
+         }
          console.log(res)
      })
      .catch(err => console.log(err)) // Check for errors
