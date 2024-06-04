@@ -5,7 +5,7 @@ const cors = require('cors')
 const cookie = require('cookie-parser')
 const router = require('./routes/auth.js')
 const router2 = require('./routes/student.js')
-
+const bookrouter = require('./routes/book.js')
 
 const app = express();
 app.use(express.json())
@@ -18,6 +18,7 @@ app.use(cookie())
 dotenv.config()
 app.use('/auth',router)
 app.use('/student',router2)
+app.use('/book',bookrouter)
 
 const PORT=8080;//
 

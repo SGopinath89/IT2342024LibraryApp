@@ -1,10 +1,12 @@
 import React from 'react';
 import '../css/home.css';
 import { Link } from 'react-router-dom';
-
+import { useEffect } from 'react';
+import axios from 'axios';
 
 const Home = () => {
-   return (
+
+return (
 
     <div className='home-main'>
 
@@ -19,8 +21,8 @@ const Home = () => {
         </p>
         <div className='button-main'>
 
-        <Link to='./login' className='button-login'>Login</Link><br></br><br></br>
-       <Link to='./register' className='button-signup'>Sign-up</Link>
+        
+       
 
         </div>
        
