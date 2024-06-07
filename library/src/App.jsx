@@ -14,9 +14,13 @@ import Logout from "./components/logout";
 import axios from "axios";
 import { useEffect } from "react";
 import EditBook from "./components/editbook";
+import Delete from "./components/delete";
+
+
 
 function App() {
   const [role, setRole] = useState('')
+ 
   
   axios.defaults.withCredentials = true;
   useEffect(() => {
@@ -48,7 +52,9 @@ function App() {
         <Route path="/addstudent" element={<Addstudent />}></Route>
         <Route path="/logout" element={<Logout setRole = {setRole}/>}></Route>
         <Route path="/book/:id" element={<EditBook />}></Route>
+        <Route path="/delete/:id" element={<Delete />}></Route>
       </Routes>
+      
     </BrowserRouter>
   );
 }

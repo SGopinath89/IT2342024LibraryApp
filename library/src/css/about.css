@@ -1,0 +1,35 @@
+.aboutpage {
+    display:flex;
+    background: url('images/background.png') center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+
+
+
+}
+
+.about{
+
+    font-size: 1.2rem;
+ 
+    margin-top: 20px;
+
+
+}
+
+.about p {
+
+  display: flex;
+  width: 500px;
+  text-align: center;
+  margin-left: 200px;
+
+
+}
+
+.about h2 {
+
+   text-align: center;
+   margin-left: 200px;
+
+}

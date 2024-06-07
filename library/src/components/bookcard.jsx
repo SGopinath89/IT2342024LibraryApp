@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const BookCard = ({book}) => {
     const {name , author ,imageUrl} = book
-    console.log("---------------------"+ book)
+   
    return (
      
     <div className='bookcard'>
@@ -19,7 +19,8 @@ const BookCard = ({book}) => {
          <div className="bookactions">
 
           <button><Link to={`/book/${book._id}`}>Edit</Link></button>
-          <button>Delete</button>
+          <button><Link to={`/delete/${book._id}`}>Delete</Link></button>
+          
 
          </div>
  

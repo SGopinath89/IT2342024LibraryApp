@@ -52,7 +52,9 @@ const Login = ({setRole2}) => {
             </div>
             <button className='login-button' onClick={handleSubmit}>Login</button>
          </div>
+         
       </div>
+      
    );
 };
 

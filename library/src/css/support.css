@@ -1,0 +1,35 @@
+.Support{
+
+
+    display:flex;
+    background: url('images/background.png') center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    text-align: center;
+
+}
+.support-content{
+
+    
+    margin-top: 100px;
+    background-color: rgb(255, 255, 255);
+    padding: 20px;
+
+}
+.support-content button{
+
+   height: 30px;
+   width: 80px;
+   border-radius: 50px;
+   border-color: brown;
+   background-color: rgb(255, 23, 23);
+   color: aliceblue;
+   
+}
+
+.textarea{
+
+    height: 350px;
+    width: 1000px;
+
+}
