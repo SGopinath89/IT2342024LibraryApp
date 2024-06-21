@@ -1,12 +1,12 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import BookCard from './bookcard';
-import '../css/book.css'
+import BookCard2 from './bookcard2';
+import '../css/book2.css'
 
-const Books = () => {
+const Books2 = () => {
    const [books, SetBooks] = useState([])
    useEffect(()=>{
-    axios.get('http://localhost:8080/book/books')
+    axios.get('http://localhost:8080/book/books2')
     .then(res =>{
       SetBooks(res.data)
       console.log(res.data)
@@ -25,7 +25,7 @@ const Books = () => {
      {
       books.map(book => {
 
-          return <BookCard key = {book.id} book = {book}></BookCard>
+          return <BookCard2 key = {book.id} book = {book}></BookCard2>
          
 
       })
@@ -38,4 +38,4 @@ const Books = () => {
 
 }
 
-export default Books
+export default Books2

@@ -6,13 +6,14 @@
     background-size: 100%;
     background-repeat: no-repeat;
     text-align: center;
+    background-color: rgba(232, 244, 235, 0.948);
 
 }
 .support-content{
 
     
     margin-top: 100px;
-    background-color: rgb(255, 255, 255);
+    background-color: rgba(232, 244, 235, 0.948);
     padding: 20px;
 
 }

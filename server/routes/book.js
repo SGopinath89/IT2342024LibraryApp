@@ -26,8 +26,22 @@ router.post('/add',verifyAdmin, async (req, res) => {
 })
 
 
-//add book get method
+//add book get method for admin
 router.get('/books', async (req,res)=>{
+
+   try {
+   const  books = await bookmodel.find()
+   return res.json(books)
+
+   } catch(err){
+   return res.json(err)
+
+   }
+
+
+})
+//books for student
+router.get('/books2', async (req,res)=>{
 
    try {
    const  books = await bookmodel.find()

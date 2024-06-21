@@ -8,6 +8,11 @@
     align-items: center;
     height: 98vh;
     background-color: rgba(232, 244, 235, 0.948);
+
+    background: url('images/background.png') center;
+   background-size: 100%;
+   background-repeat: no-repeat;
+   
   
   }
   

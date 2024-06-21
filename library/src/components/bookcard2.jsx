@@ -1,9 +1,9 @@
 import React from 'react';
-import '../css/book.css'
+import '../css/book2.css'
 import { Link } from 'react-router-dom';
 
 
-const BookCard = ({book}) => {
+const BookCard2 = ({book}) => {
     const {name , author ,imageUrl} = book
    
    return (
@@ -19,9 +19,9 @@ const BookCard = ({book}) => {
          </div>
          <div className="bookactions">
 
-          <button><Link to={`/book/${book._id}`}>Edit</Link></button>
-          <button><Link to={imageUrl}>View</Link></button>
-          <button><Link to={`/delete/${book._id}`}>Delete</Link></button>
+          
+          <button className='btn1'><Link to={imageUrl}>View</Link></button>
+          
           
 
          </div>
@@ -32,4 +32,4 @@ const BookCard = ({book}) => {
 
 }
 
-export default BookCard
+export default BookCard2

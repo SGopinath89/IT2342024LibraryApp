@@ -15,46 +15,46 @@ import axios from "axios";
 import { useEffect } from "react";
 import EditBook from "./components/editbook";
 import Delete from "./components/delete";
-
-
+import View from "./components/view";
+import Books2 from "./components/books2";
 
 function App() {
-  const [role, setRole] = useState('')
- 
-  
+  const [role, setRole] = useState("");
+
   axios.defaults.withCredentials = true;
   useEffect(() => {
-    axios.get('http://localhost:8080/auth/verify')   
-    .then(res => {
-      if(res.data.login){
-
-       setRole(res.data.role)
-      } else {
-
-        setRole('')
-      }
-      console.log(res)
-    }).catch(err => console.log(err))
-}, [])
+    axios
+      .get("http://localhost:8080/auth/verify")
+      .then((res) => {
+        if (res.data.login) {
+          setRole(res.data.role);
+        } else {
+          setRole("");
+        }
+        console.log(res);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   return (
     <BrowserRouter>
-      <Navbar role = {role}/>
+      <Navbar role={role} />
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/books" element={<Books />}></Route>
-        <Route path="/login" element={<Login setRole2 = {setRole}/>}></Route>
+        <Route path="/books2" element={<Books2 />}></Route>
+        <Route path="/login" element={<Login setRole2={setRole} />}></Route>
         <Route path="/register" element={<Register />}></Route>
         <Route path="/support" element={<Support />}></Route>
         <Route path="/about" element={<About />}></Route>
         <Route path="/dashboard" element={<Dashboard />}></Route>
         <Route path="/addbook" element={<Addbook />}></Route>
         <Route path="/addstudent" element={<Addstudent />}></Route>
-        <Route path="/logout" element={<Logout setRole = {setRole}/>}></Route>
+        <Route path="/logout" element={<Logout setRole={setRole} />}></Route>
         <Route path="/book/:id" element={<EditBook />}></Route>
         <Route path="/delete/:id" element={<Delete />}></Route>
+        <Route path="/view/:id" element={<View />}></Route>
       </Routes>
-      
     </BrowserRouter>
   );
 }
