@@ -8,6 +8,9 @@ const router = express.Router();
 router.post("/login", async (req, res) => {
   try {
     const { username, password, role } = req.body;
+    if (!username || !password || !role) {
+      res.status(400).json({ message: "Provide all fields" });
+    }
     if (role === "admin") {
       const admin = await adminmodel.findOne({ username });
       if (!admin) {
@@ -22,7 +25,12 @@ router.post("/login", async (req, res) => {
         process.env.admin_key
       );
       res.cookie("token", token, { httpOnly: true, secure: true });
-      return res.json({ login: true, role: "admin" });
+      return res.json({
+        login: true,
+        role: "admin",
+        message: "Admin Login Successfully",
+        token,
+      });
     } else if (role === "student") {
       const student = await studentmodel.findOne({ username });
       if (!student) {
@@ -37,7 +45,12 @@ router.post("/login", async (req, res) => {
         process.env.Student_key
       );
       res.cookie("token", token, { httpOnly: true, secure: true });
-      return res.json({ login: true, role: "student" });
+      return res.json({
+        login: true,
+        role: "student",
+        message: "Student Login Successfully",
+        token,
+      });
     } else {
     }
   } catch (er) {
@@ -96,4 +109,4 @@ router.get("/logout", (req, res) => {
   return res.json({ logout: true });
 });
 
-(module.exports = router), { verifyAdmin, verifyAdmin };
+(module.exports = router), { verifyAdmin, verifyUser };
