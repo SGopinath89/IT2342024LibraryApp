@@ -3,16 +3,21 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const adminmodel = require("../models/admin.js");
 const studentmodel = require("../models/Student.js");
+const verifyAdmin = require("../security/adminauth.js");
+const verifyUser = require("../security/userauth.js");
 const router = express.Router();
 
+//login function
 router.post("/login", async (req, res) => {
   try {
+    //username password and role request from user
     const { username, password, role } = req.body;
+    //validation part
     if (!username || !password || !role) {
       res.status(400).json({ message: "Provide all fields" });
     }
     if (role === "admin") {
-      const admin = await adminmodel.findOne({ username });
+      const admin = await adminmodel.findOne({ username }); //admin validation by username
       if (!admin) {
         return res.json({ message: "admin not registered" });
       }
@@ -20,6 +25,7 @@ router.post("/login", async (req, res) => {
       if (!validpassword) {
         return res.json({ message: "wrong Password" });
       }
+      //asign token for admin
       const token = jwt.sign(
         { username: admin.username, role: "admin" },
         process.env.admin_key
@@ -31,8 +37,9 @@ router.post("/login", async (req, res) => {
         message: "Admin Login Successfully",
         token,
       });
+      //student login part
     } else if (role === "student") {
-      const student = await studentmodel.findOne({ username });
+      const student = await studentmodel.findOne({ username }); //student validation by username(unique)
       if (!student) {
         return res.json({ message: "Student not registered" });
       }
@@ -40,6 +47,7 @@ router.post("/login", async (req, res) => {
       if (!validpassword) {
         return res.json({ message: "wrong Password" });
       }
+      //asign token for student
       const token = jwt.sign(
         { username: student.username, role: "student" },
         process.env.Student_key
@@ -58,48 +66,6 @@ router.post("/login", async (req, res) => {
   }
 });
 
-const verifyAdmin = (req, res, next) => {
-  const token = req.cookies.token;
-  if (!token) {
-    return res.json({ message: "Wrong Admin" });
-  } else {
-    jwt.verify(token, process.env.admin_key, (err, decoded) => {
-      if (err) {
-        return res.json({ message: "Invalid Token" });
-      } else {
-        req.username = decoded.username;
-        req.role = decoded.role;
-        next();
-      }
-    });
-  }
-};
-
-const verifyUser = (req, res, next) => {
-  const token = req.cookies.token;
-  if (!token) {
-    return res.json({ message: "Wrong User" });
-  } else {
-    jwt.verify(token, process.env.admin_key, (err, decoded) => {
-      if (err) {
-        jwt.verify(token, process.env.Student_key, (err, decoded) => {
-          if (err) {
-            return res.json({ message: "Invalid Token" });
-          } else {
-            req.username = decoded.username;
-            req.role = decoded.role;
-            next();
-          }
-        });
-      } else {
-        req.username = decoded.username;
-        req.role = decoded.role;
-        next();
-      }
-    });
-  }
-};
-
 router.get("/verify", verifyUser, (req, res) => {
   return res.json({ login: true, role: req.role });
 });
@@ -109,4 +75,4 @@ router.get("/logout", (req, res) => {
   return res.json({ logout: true });
 });
 
-(module.exports = router), { verifyAdmin, verifyUser };
+module.exports = router;

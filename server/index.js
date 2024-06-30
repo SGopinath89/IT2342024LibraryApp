@@ -3,10 +3,11 @@ const dotenv = require("dotenv");
 import("./mongodb.js");
 const cors = require("cors");
 const cookie = require("cookie-parser");
+//import routes
 const AuthRouter = require("./routes/auth.js");
 const StudentRouter = require("./routes/student.js");
 const BookRouter = require("./routes/book.js");
-
+//import models
 const bookmodel = require("./models/book.js");
 const adminmodel = require("./models/admin.js");
 const studentmodel = require("./models/Student.js");
@@ -25,6 +26,7 @@ app.use("/auth", AuthRouter);
 app.use("/student", StudentRouter);
 app.use("/book", BookRouter);
 
+//display documents in dashboard
 app.get("/dashboard", async (req, res) => {
   try {
     const student = await studentmodel.countDocuments();

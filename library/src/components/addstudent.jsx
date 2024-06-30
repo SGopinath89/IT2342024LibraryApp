@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 const Addstudent = () => {
   const [regnum, setRegnum] = useState("");
   const [username, setUsername] = useState("");
-  const [grade, setGrade] = useState("");
+  const [academicyear, setGrade] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
@@ -17,7 +17,7 @@ const Addstudent = () => {
         regnum,
         username,
         password,
-        grade,
+        academicyear,
       })
       .then((res) => {
         if (res.data.registered) {
@@ -51,11 +51,11 @@ const Addstudent = () => {
           />
         </div>
         <div className="form">
-          <label htmlFor="grade">Academic Year:</label>
+          <label htmlFor="academicyear">Academic Year:</label>
           <input
             type="text"
-            id="grade"
-            name="grade"
+            id="academicyear"
+            name="academicyear"
             onChange={(e) => setGrade(e.target.value)}
           />
         </div>
