@@ -66,9 +66,7 @@ router.post("/login", async (req, res) => {
   }
 });
 
-router.get("/verify", verifyUser, (req, res) => {
-  return res.json({ login: true, role: req.role });
-});
+
 
 router.get("/logout", (req, res) => {
   res.clearCookie("token");
