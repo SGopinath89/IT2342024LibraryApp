@@ -4,9 +4,9 @@ import("./mongodb.js");
 const cors = require("cors");
 const cookie = require("cookie-parser");
 //import routes
-const AuthRouter = require("./routes/auth.js");
-const StudentRouter = require("./routes/student.js");
-const BookRouter = require("./routes/book.js");
+const AuthRouter = require("./routes/authroute.js");
+const StudentRouter = require("./routes/studentroute.js");
+const BookRouter = require("./routes/bookroute.js");
 //import models
 const bookmodel = require("./models/book.js");
 const adminmodel = require("./models/admin.js");

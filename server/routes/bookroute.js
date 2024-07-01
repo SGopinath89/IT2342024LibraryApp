@@ -3,7 +3,7 @@ const bookmodel = require("../models/book.js");
 const router = express.Router();
 const verifyAdmin = require("../security/adminauth.js");
 
-//add book and verifyadmin again while adding the book
+//add book and verifyadmin again while adding the book. it means Admin can only add the books to the website
 router.post("/add", verifyAdmin, async (req, res) => {
   try {
     const { name, author, imageUrl } = req.body;
@@ -19,8 +19,8 @@ router.post("/add", verifyAdmin, async (req, res) => {
   }
 });
 
-//add book get method for admin
-router.get("/books", async (req, res) => {
+//add book get method for admin (only admin token can access this)
+router.get("/booksadmin", verifyAdmin, async (req, res) => {
   try {
     const books = await bookmodel.find();
     return res.json(books);
@@ -29,7 +29,7 @@ router.get("/books", async (req, res) => {
   }
 });
 //books for student
-router.get("/books2", async (req, res) => {
+router.get("/booksstudent", async (req, res) => {
   try {
     const books = await bookmodel.find();
     return res.json(books);
@@ -39,7 +39,7 @@ router.get("/books2", async (req, res) => {
 });
 
 //edit book get method
-router.get("/book/:id", async (req, res) => {
+router.get("/book/:id", verifyAdmin, async (req, res) => {
   try {
     const id = req.params.id;
     const books = await bookmodel.findById({ _id: id });
@@ -48,8 +48,8 @@ router.get("/book/:id", async (req, res) => {
     return res.json(err);
   }
 });
-//this is put method for updating book
-router.put("/book/:id", async (req, res) => {
+//this is put method for updating book only admin can update
+router.put("/book/:id", verifyAdmin, async (req, res) => {
   try {
     const id = req.params.id;
     const book = await bookmodel.findByIdAndUpdate({ _id: id }, req.body);
@@ -59,7 +59,8 @@ router.put("/book/:id", async (req, res) => {
   }
 });
 
-router.delete("/book/:id", async (req, res) => {
+//only admin can delete books
+router.delete("/book/:id", verifyAdmin, async (req, res) => {
   try {
     const id = req.params.id;
     const book = await bookmodel.findByIdAndDelete({ _id: id });

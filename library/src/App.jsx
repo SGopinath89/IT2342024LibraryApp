@@ -3,7 +3,6 @@ import Home from "./components/home";
 import Navbar from "./components/navbar";
 import Books from "./components/books";
 import Login from "./components/login";
-import Register from "./components/register";
 import Support from "./components/support";
 import About from "./components/about";
 import Dashboard from "./components/dashboard";
@@ -44,7 +43,6 @@ function App() {
         <Route path="/books" element={<Books />}></Route>
         <Route path="/books2" element={<Books2 />}></Route>
         <Route path="/login" element={<Login setRole2={setRole} />}></Route>
-        <Route path="/register" element={<Register />}></Route>
         <Route path="/support" element={<Support />}></Route>
         <Route path="/about" element={<About />}></Route>
         <Route path="/dashboard" element={<Dashboard />}></Route>
