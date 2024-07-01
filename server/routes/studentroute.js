@@ -59,8 +59,4 @@ router.get("/search", verifyUser, async (req, res) => {
   }
 });
 
-//get student details only admin can do this
-
-//Update Student details Only admin can do this
-
 module.exports = router;

@@ -39,9 +39,9 @@ router.post("/login", async (req, res) => {
       });
       //student login part
     } else if (role === "student") {
-      const student = await studentmodel.findOne({ username }); //student validation by username(unique)
+      const student = await studentmodel.findOne({ username });
       if (!student) {
-        return res.json({ message: "Student not registered" });
+        return res.json({ message: "Student username not registered" });
       }
       const validpassword = await bcrypt.compare(password, student.password);
       if (!validpassword) {
