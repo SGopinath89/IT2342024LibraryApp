@@ -39,6 +39,17 @@ router.post("/register", verifyAdmin, async (req, res) => {
   }
 });
 
+//Student profile details
+router.get("/profile/:username", verifyUser, async (req, res) => {
+  try {
+    const username = req.params.username;
+    const profile = await studentmodel.findOne({ username: username });
+    return res.json(profile);
+  } catch (err) {
+    return res.json(err);
+  }
+});
+
 //Search books
 router.get("/search", verifyUser, async (req, res) => {
   try {

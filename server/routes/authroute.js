@@ -67,7 +67,9 @@ router.post("/login", async (req, res) => {
 });
 
 router.get("/verify", verifyUser, (req, res) => {
-  return res.json({ login: true, role: req.role });
+  return res.json({ login: true, role: req.role, username: req.username });
+  //console.log(res.json());
+  //console.log(res.data.role);
 });
 
 router.get("/logout", (req, res) => {

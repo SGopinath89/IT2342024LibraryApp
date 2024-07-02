@@ -16,9 +16,11 @@ import EditBook from "./components/editbook";
 import Delete from "./components/delete";
 import View from "./components/view";
 import Books2 from "./components/books2";
+import Profile from "./components/profile";
 
 function App() {
   const [role, setRole] = useState("");
+  const [username, setUsername] = useState(null);
 
   axios.defaults.withCredentials = true;
   useEffect(() => {
@@ -27,6 +29,7 @@ function App() {
       .then((res) => {
         if (res.data.login) {
           setRole(res.data.role);
+          setUsername(res.data.username);
         } else {
           setRole("");
         }
@@ -37,7 +40,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Navbar role={role} />
+      <Navbar role={role} userId={username} />
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/books" element={<Books />}></Route>
@@ -52,6 +55,7 @@ function App() {
         <Route path="/book/:id" element={<EditBook />}></Route>
         <Route path="/delete/:id" element={<Delete />}></Route>
         <Route path="/view/:id" element={<View />}></Route>
+        <Route path="/profile/:username" element={<Profile />}></Route>
       </Routes>
     </BrowserRouter>
   );

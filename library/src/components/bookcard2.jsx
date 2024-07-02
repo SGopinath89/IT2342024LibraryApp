@@ -14,7 +14,7 @@ const BookCard2 = ({ book }) => {
       </div>
       <div className="bookactions">
         <button className="btn1">
-          <Link to={`/books/${_id}`}>View</Link>
+          <Link to={imageUrl}>View</Link>
         </button>
       </div>
     </div>
