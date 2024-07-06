@@ -12,7 +12,9 @@ const bookmodel = require("./models/book.js");
 const adminmodel = require("./models/admin.js");
 const studentmodel = require("./models/Student.js");
 
+const seed = require("./seed.js")
 const app = express();
+
 app.use(express.json());
 app.use(
   cors({
