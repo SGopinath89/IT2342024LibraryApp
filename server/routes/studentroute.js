@@ -53,8 +53,8 @@ router.get("/profile/:username", verifyUser, async (req, res) => {
 //Search books
 router.get("/search", verifyUser, async (req, res) => {
   try {
-    const { bookname } = req.body; //postman check
-    //const { bookname } = req.query;
+    //const { bookname } = req.body; //postman check
+    const { bookname } = req.query;
     if (!bookname) {
       return res.status(400).json({ message: "Enter Required Details" });
     }
