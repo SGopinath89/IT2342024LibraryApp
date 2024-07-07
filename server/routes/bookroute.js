@@ -6,10 +6,11 @@ const verifyAdmin = require("../security/adminauth.js");
 //add book and verifyadmin again while adding the book. it means Admin can only add the books to the website
 router.post("/add", verifyAdmin, async (req, res) => {
   try {
-    const { name, author, imageUrl } = req.body;
+    const { name, author, bookpath, imageUrl } = req.body;
     const newbook = new bookmodel({
       name,
       author,
+      bookpath,
       imageUrl,
     });
     await newbook.save(); //save the new book to the database

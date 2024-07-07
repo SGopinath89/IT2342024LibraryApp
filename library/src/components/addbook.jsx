@@ -7,12 +7,18 @@ const Addbook = () => {
   const [name, setName] = useState("");
   const [author, setAuthor] = useState("");
   const [imageUrl, setImageUrl] = useState("");
+  const [bookpath, setbookpath] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:8080/book/add", { name, author, imageUrl })
+      .post("http://localhost:8080/book/add", {
+        name,
+        author,
+        bookpath,
+        imageUrl,
+      })
       .then((res) => {
         if (res.data.added) {
           navigate("/books");
@@ -43,6 +49,15 @@ const Addbook = () => {
             id="author"
             name="auhtor"
             onChange={(e) => setAuthor(e.target.value)}
+          />
+        </div>
+        <div className="book">
+          <label htmlFor="path">Book Path URL:</label>
+          <input
+            type="text"
+            id="path"
+            name="path"
+            onChange={(e) => setbookpath(e.target.value)}
           />
         </div>
         <div className="book">
