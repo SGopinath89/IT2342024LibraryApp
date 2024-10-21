@@ -55,6 +55,7 @@ const Login = ({ setRole2 }) => {
             id="role"
             onChange={(e) => setRole(e.target.value)}
           >
+            <option value="">Select</option>
             <option value="student">Student</option>
             <option value="admin">Admin</option>
           </select>
